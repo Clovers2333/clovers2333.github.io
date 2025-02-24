@@ -168,3 +168,4 @@ public:
 ```
 
 在 Shape 中，虽然 `do_draw()` 是一个函数，但是在代码运行的时候，会更具调用它对象的实际类型来决定到底调用 `Circle::do_draw()` 还是 `Rectangle::do_draw()` 。这种机制就是 OOP 中的 **多态 (polymorphism)**。
+
