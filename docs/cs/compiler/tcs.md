@@ -147,6 +147,6 @@ NFA $M = (K, \Sigma, \Delta, s, F)$ 转为 DFA $M' = (K', \Sigma, \delta, s', F'
 
 Lex 和其他类似的词法分析器中规定了两个规则以消除二义性：
 
-- Longest Match：输入的字符串中的最长的能与任一正则表达式匹配的子串为匹配到的 token
+- Longest Match：输入的字符串中的最长的能与任一正则表达式匹配的子串（必须从头开始）为匹配到的 token
 
 - Rule Priority：对匹配到的 longest substring，选择第一个与之匹配的正则表达式。即正则表达式的匹配顺序是有意义的

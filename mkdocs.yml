@@ -124,10 +124,15 @@ nav:
       - Bash Cheatsheet: cs/basic/bash_cheatsheet.md
       - MIT Missing Semester: cs/basic/MIT-Missing-Semester.md
       - 程序设计与算法基础: cs/basic/fpa.md
-    - Basic Languages:
+    - Languages:
       - Python:
         - CS61A: cs/languages/python/cs61a.md
         - cheatsheet: cs/languages/python/cheatsheet.md
+      - C++:
+        - oop:
+          - Index: cs/languages/cpp/oop/index.md
+          - 编程范式与 OOP 引入: cs/languages/cpp/oop/intro.md
+          - 类：定义、成员、构造、析构: cs/languages/cpp/oop/class-1.md
   #   - 前端三件套:
   #     - jaca script:
   #     - css:
@@ -146,6 +151,15 @@ nav:
         - 随机化: cs/ds/ads/rand.md
         - 并行计算: cs/ds/ads/parallel.md
         - 外部排序: cs/ds/ads/external.md
+    - 编译原理:
+      - Index: cs/compiler/index.md
+      - 计算理论基础: cs/compiler/tcs.md
+      - 词法分析: cs/compiler/lexical.md
+      - 语法分析: cs/compiler/syntax.md
+      - 语义分析: cs/compiler/semantic.md
+      - 运行时环境: cs/compiler/environment.md
+      - 中间代码生成: cs/compiler/intermediate.md
+      - 目标代码生成: cs/compiler/object.md
     - AI:
       - 人工智能引论:
         - Index: cs/ai/intro/index.md

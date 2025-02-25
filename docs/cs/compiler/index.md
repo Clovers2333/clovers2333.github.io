@@ -4,10 +4,10 @@
 
 ## Table of Contents
 
-- [ ] [计算理论基础](tcs.md)
-- [ ] [词法分析](word.md)
+- [x] [计算理论基础](tcs.md)
+- [ ] [词法分析](lexical.md)
 - [ ] [语法分析](syntax.md)
-- [ ] [语义分析](meaning.md)
+- [ ] [语义分析](semantic.md)
 - [ ] [运行时环境](environment.md)
-- [ ] [中间代码生成](mid_code.md)
-- [ ] [目标代码生成](obj_code.md)
+- [ ] [中间代码生成](intermediate.md)
+- [ ] [目标代码生成](object.md)
