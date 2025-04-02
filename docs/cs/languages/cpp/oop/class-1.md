@@ -177,3 +177,90 @@ public:
 这样，就可以使用 `Container c = Container();` 构造一个对象了，其中`Container();` 会返回一个构造出的无名对象。为了代码更加简洁紧凑，C++ 允许更加简洁的写法：`Container c;`。
 
 注意，由于定义一个对象时需要用到构造函数，因此如果要用的构造函数是 `private` 的，对象就无法被构造。
+
+![image-20250226103348080](./assets/image-20250226103348080.png)
+
+和普通的函数一样，构造函数是可以有参数的：
+
+```cpp
+class Container {
+    elem* val;
+    // ...
+public:
+    Container(unsigned size) {
+        val = (elem*)malloc(sizeof(elem) * size);
+        // ...
+    }
+    // ...
+};
+```
+
+这样，就可以使用 `Container c2 = Container(64);` 构造一个自定义大小的容器了。
+
+同样地，C++ 允许更加简洁的写法：`Container c2(64);`。
+
+### 动态分配内存
+
+构造函数存在的意义是给类中的每个对象提供一定的“保证”，而 C++ 通过确保每个对象都执行过构造函数来提供这一保证。在 C 语言中，我们通过 `malloc` 来新定义一个指针指向的类：`Container *p = (Container *)malloc(sizeof(Container));`。那么如果我们在 C++ 中这么写，会发生什么呢？
+
+事实上，这确实分配了 `sizeof(Container)` 那么大的空间，但是确实也没有调用构造函数。因此，C++ 引入了新的用于创建动态对象的操作符 `new` 以及对应的用来回收的 `delete`。
+
+`new` 表达式可以用来创建对象或者数组：`int * p1 = new int; int * pa = new int[n];`。
+
+如果 `new` 的对象是定义的类，那么构造函数会被调用：
+
+![image-20250226110139738](./assets/image-20250226110139738.png)
+
+`new` 表达式也可以包含初始化器，但是只能是 `( something )` 或者 `{ something }` 的形式，不能是 `= something` 的形式：
+
+![image-20250226110350386](./assets/image-20250226110350386.png)
+
+`new` 表达式干的事情是申请内存 + 调用构造函数，返回一个指针；而 `delete` 表达式干的事情是调用析构函数 + 释放内存。`new` 表达式是 **唯一** 的用来创建动态生命周期对象的方式（因为 `malloc` 只是开辟内存，并不创建对象。对象是「a region of storage with **associated semantics**」）。
+
+`delete` 会调用类对象的析构函数：
+
+![2023-03-05-16-43-29](./assets/2023-03-05-16-43-29-20250226111458902.png)
+
+## 函数默认参数与函数重载
+
+### 默认参数
+
+加入我们希望用户既可以给定大小，也能够在不知道要开多大的情况下使用一个默认大小：
+
+```c
+void point(int x = 3, int y = 4);
+
+point(1, 2); // calls point(1, 2)
+point(1);    // calls point(1, 4)
+point();     // calls point(3, 4)
+```
+
+### 函数重载
+
+那么，假如我希望根据是否传入某个参数来选择不同的构造函数，怎么办呢？——直接在类里面构造不同的构造函数即可：
+
+```cpp
+class Container {
+    elem* val;
+    // ...
+public:
+    Container() { val = nullptr; }
+    Container(unsigned size) {
+        val = (elem*)malloc(sizeof(elem) * size);
+    }
+    Container(unsigned size, elem initVal) {
+        val = (elem*)malloc(sizeof(elem) * size);
+        for (unsigned i = 0; i < size; i++) {    
+            val[i] = initVal;
+        }
+    }
+};
+```
+
+事实上，不仅是函数支持重载，其他的成员函数也支持重载。
+
+如果一个名字引用多个函数，则称它是 overloaded 的。当使用这样的名字的时候，编译器用来决定使用哪个；这个过程称为 **重载解析 (overload resolution)**。简单来说，重载解析首先收集这个名字能找到的函数形成候选函数集 (candidate functions)，然后检查参数列表来形成可行函数集 (viable functions)，然后在可行函数集中按照一定的规则比较这些函数，如果 **恰好** 有一个函数 (best viable function) 优于其他所有函数，则重载解析成功并调用此函数；否则编译失败。
+
+![2023-03-03-16-03-41](./assets/2023-03-03-16-03-41-20250226112922870.png)
+
+在第二个 $f(0)$ 中，`long` 和 `float` 都需要转换，没有一个优于另一个，所以编译失败。

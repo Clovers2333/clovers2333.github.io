@@ -170,6 +170,14 @@ nav:
         - 深度学习: cs/ai/intro/dl.md
         - 强化学习: cs/ai/intro/rl.md
         - 人工智能博弈: cs/ai/intro/game.md
+      - CS229:
+        - Index: cs/ai/cs229/index.md
+        - Linear regression: cs/ai/cs229/chapter1.md
+        - Logistic regression: cs/ai/cs229/chapter2.md
+        - Generalized Linear Models: cs/ai/cs229/chapter3.md
+        - Generative Learning Algorithms: cs/ai/cs229/chapter4.md
+        - Kernel Methods: cs/ai/cs229/chapter5.md
+        - Support Vector Machines: cs/ai/cs229/chapter6.md
     - System:
       - Languages:
         - CS61C: cs/system/languages/cs61c.md
@@ -216,8 +224,10 @@ nav:
   - Computing Economics:
     - 24-25春夏讨论班:
       - Index: computing_eco/24-25class/index.md
-      - 微观经济理论进阶: 
-        - Index: computing_eco/24-25class/micro/index.md
+      - 博弈论与计算经济: 
+        - Index: computing_eco/24-25class/ec/index.md
+        - 博弈论基础回顾: computing_eco/24-25class/ec/game_review.md
+        - 零和博弈与 Min-Max 定理: computing_eco/24-25class/ec/minmax.md
       - 拍卖理论:
         - Index: computing_eco/24-25class/auction/index.md
       - 均衡的计算: 

@@ -6,5 +6,5 @@
 
 ## Table of Contents
 
-- [x] [编程范式与 OOP 引入](index.md)
+- [x] [编程范式与 OOP 引入](intro.md)
 - [ ] [类：定义、成员、构造、析构](class-1.md)
