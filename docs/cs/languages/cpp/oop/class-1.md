@@ -199,9 +199,30 @@ public:
 
 同样地，C++ 允许更加简洁的写法：`Container c2(64);`。
 
+在一些情况下，member initializer lists 是必要的。例如：
+
+```cpp
+class Point {
+    int x, y;
+public:
+    Point(int x, int y) : x(x), y(y) {}
+};
+
+class Circle {
+    Point c;
+    int r;
+public:
+    Circle(int cx, int cy, int r) : c(cx, cy), r(r) {}
+};
+```
+
+C++ 规定，在构造函数的函数体执行之前，所有参数要么按照 member initializer lists 的描述初始化，要么以默认方式初始化。而对于类的对象，「默认方式初始化」意味着使用 default constructor 构造。然而，Point 类并没有 default constructor，因此如果 member initializer lists 没有指明 Point 类的初始化方式，就会出现编译错误：
+
+![](./assets/class-1-1.png)
+
 ### 动态分配内存
 
-构造函数存在的意义是给类中的每个对象提供一定的“保证”，而 C++ 通过确保每个对象都执行过构造函数来提供这一保证。在 C 语言中，我们通过 `malloc` 来新定义一个指针指向的类：`Container *p = (Container *)malloc(sizeof(Container));`。那么如果我们在 C++ 中这么写，会发生什么呢？
+构造函数存在的意义是给类中的每个对象提供一定的"保证"，而 C++ 通过确保每个对象都执行过构造函数来提供这一保证。在 C 语言中，我们通过 `malloc` 来新定义一个指针指向的类：`Container *p = (Container *)malloc(sizeof(Container));`。那么如果我们在 C++ 中这么写，会发生什么呢？
 
 事实上，这确实分配了 `sizeof(Container)` 那么大的空间，但是确实也没有调用构造函数。因此，C++ 引入了新的用于创建动态对象的操作符 `new` 以及对应的用来回收的 `delete`。
 
@@ -264,3 +285,77 @@ public:
 ![2023-03-03-16-03-41](./assets/2023-03-03-16-03-41-20250226112922870.png)
 
 在第二个 $f(0)$ 中，`long` 和 `float` 都需要转换，没有一个优于另一个，所以编译失败。
+
+## 析构函数
+
+析构函数 (destructor) 是一种特殊的成员函数，用于在对象的生命周期结束时执行清理工作。析构函数 destructor 也时常被简写为 d'tor 等。
+
+对于一个类对象，它的 生命周期 (lifetime) 自它的初始化（构造）完成开始，到它的析构函数调用被启动为止。
+
+任何一个对象都会占据一部分存储；这部分存储的最小生命周期称为这个对象的 storage duration。对象的 lifetime 等于或被包含于其 storage duration。
+
+在下面的情况下，构造函数会被调用：
+
+- **对于全局对象**：在 `main()` 函数运行之前，或者在同一个编译单元内定义的任一函数或对象被使用之前。在同一个编译单元内，它们的构造函数按照声明的顺序初始化。
+- **对于 static local variables**：在第一次运行到它的声明的时候。
+- **对于 automatic storage duration 的对象**：在其声明被运行时。
+- **对于 dynamic storage duration 的对象**：在其用 `new` 表达式创建时。
+
+在下面的情况下，析构函数会被调用：
+
+- **对于 static storage duration 的对象**：在程序结束时，按照与构造相反的顺序。
+- **对于 automatic storage duration 的对象**：在所在的 block 退出时，按照与构造相反的顺序。
+- **对于 dynamic storage duration 的对象**：在 `delete` 表达式中。
+- **对于临时对象**：当其生命周期结束时。
+
+数组元素的析构函数调用顺序与其构造顺序相反。
+
+![](./assets/class-1-2.png)
+
+```cpp
+class Count{
+    int s = 0;
+public:
+    ~Count();
+
+    Count(int s) { this->s = s; }
+    int getS(){
+        return s;
+    }
+    void sPlus(){
+        s++;
+    }
+};
+
+Count::~Count() { cout << this->s << " ";}
+
+Count count5(555);
+static Count count6(666);
+Count count7(777);
+
+void f(){
+    static Count count9(999);
+}
+
+int main() {
+    Count *count1 = new Count(111);
+    Count *count2 = new Count(222);
+
+    Count count3(333);
+    Count count4(444);
+
+    f();
+
+    static Count count8(888);
+
+    delete(count1);
+
+    for(int i = 1; i <= 5; i++)
+        for(Count c(1); c.getS() <= i; c.sPlus());
+
+    return 0;
+}
+```
+
+答案是 111 2 3 4 5 6 444 333 888 999 777 666 555。
+

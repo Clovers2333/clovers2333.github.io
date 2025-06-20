@@ -6,5 +6,9 @@
 
 ## Table of Contents
 
+> 基本参考 [xyx 的博客](https://xuan-insr.github.io/cpp/cpp_restart/1_birth/)
+
 - [x] [编程范式与 OOP 引入](intro.md)
 - [ ] [类：定义、成员、构造、析构](class-1.md)
+- [ ] [类：拷贝赋值、运算符重载与引用](class-2.md)
+- [ ] [I/O Stream](io.md)

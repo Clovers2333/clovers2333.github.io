@@ -5,3 +5,6 @@
 ## 快速索引
 
 - [操作系统](system/os/index.md)
+- [编译原理](compiler/index.md)
+- [CS229 机器学习](ai/cs229/index.md)
+- [C++](languages/cpp/index.md)

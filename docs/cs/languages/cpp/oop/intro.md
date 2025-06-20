@@ -96,7 +96,7 @@ struct arraylist {
 
 #### 访问控制
 
-在 C++ 中，提供了 access-specifier 来解决“类中成员变量对外权限”的问题，包括 `public`, `private` 和 `protected` 三种，我们主要只讨论前两种。
+在 C++ 中，提供了 access-specifier 来解决"类中成员变量对外权限"的问题，包括 `public`, `private` 和 `protected` 三种，我们主要只讨论前两种。
 
 所谓 `public`，是说这之后的成员变量和成员函数对外部可见；而 `private` 则是说这之后的成员变量和成员函数不能在类外被访问，只能在类的成员函数内访问或调用。例如：
 
@@ -116,7 +116,7 @@ public:
 };
 ```
 
-此时，如果外部代码尝试访问 private 变量，就会被编译器拒绝，在这种情况下，private 的变量在外部只能通过 `checkPassword`，`setAge`，`getAge` 这些函数间接访问，从而让外部的访问是有限制并且经过检查的。
+此时，如果外部代码尝试访问 private 变量，就会被编译器拒绝，在这种情况下，private 的变量在外部只能通过 `checkPassword`, `setAge`, `getAge` 这些函数间接访问，从而让外部的访问是有限制并且经过检查的。
 
 （在 C++ 中，struct 默认都是 public，class 默认都是 private，其余二者没有任何区别）
 
@@ -126,7 +126,7 @@ public:
 
 一个很自然的想法是对于这些相似的类定义一个更加高级的类，记录那些共同的部分，然后在定义低级的类时，对高级类的成员和行为进行**继承**。
 
-比如我们先定义一个“图形类”：
+比如我们先定义一个"图形类"：
 
 ```c++
 class Shape {       // 基类 Shape
@@ -169,3 +169,89 @@ public:
 
 在 Shape 中，虽然 `do_draw()` 是一个函数，但是在代码运行的时候，会更具调用它对象的实际类型来决定到底调用 `Circle::do_draw()` 还是 `Rectangle::do_draw()` 。这种机制就是 OOP 中的 **多态 (polymorphism)**。
 
+```cpp
+#include <iostream>
+using namespace std;
+
+class Shape{
+public:
+    void move(){
+        cout << "Shape::move()" << endl;
+    }
+    virtual void render(){
+        cout << "Shape::render()" << endl;
+    }
+};
+
+class Ellipse : public Shape{
+public:
+    void render(){
+        cout << "Ellipse::render()" << endl;
+    }
+};
+
+class Circle : public Ellipse{
+public:
+    void render(){
+        cout << "Circle::render()" << endl;
+    }
+};
+
+void foo(Shape *p){
+    p->move();
+    p->render();
+}
+
+int main(){
+    Ellipse e;
+    Circle c;
+    foo(&e);
+    foo(&c);
+    return 0;
+}
+```
+
+![](./assets/intro-1.png)
+
+### Virtual Function
+
+#### 虚函数 (Virtual Functions)
+
+- **非虚函数**：编译器为指定类型生成静态或直接的调用，执行更快。
+- **虚函数**：
+    - 在派生类中能被透明地 (Transparently) 重写。
+    - 对象携带一组虚函数表（vtable）。
+    - 编译器检查这组虚函数，并动态调用正确的函数。
+    - 如果编译器在编译时知道函数，那么就会生成静态调用。
+
+#### 多态变量 (Polymorphic Variables)
+
+- 对象的指针或引用变量是多态变量。
+- 它们可以保存声明类型的对象，或声明类型的子类型的对象。
+
+---
+
+对于上面这个例子，我们在 `Shape` 类的 `render` 函数前加上 `virtual` 关键字：
+
+```cpp
+class Shape{
+public:
+    void move(){
+        cout << "Shape::move()" << endl;
+    }
+    virtual void render(){
+        cout << "Shape::render()" << endl;
+    }
+};
+```
+
+这时我们再运行程序，便会得到想要的结果：
+
+```
+Shape::move()
+Ellipse::render()
+Shape::move()
+Circle::render()
+```
+
+**多态实现的原理：如果我们有一个子类的指针，并执行它的成员函数，它会从指针先找到类，再找到虚函数表（共享的），再找到函数的地址，然后执行函数。**

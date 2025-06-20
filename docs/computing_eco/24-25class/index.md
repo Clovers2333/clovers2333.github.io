@@ -6,7 +6,7 @@
 
 ## Table of Contents
 
-- [ ] [博弈论与计算经济](micro/index.md)
+- [ ] [博弈论与计算经济](ec/index.md)
 - [ ] [拍卖理论](auction/index.md)
 - [ ] [均衡的计算](equilibrium/index.md)
 - [ ] [算法博弈论](game/index.md)

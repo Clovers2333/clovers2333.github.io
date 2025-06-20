@@ -133,6 +133,8 @@ nav:
           - Index: cs/languages/cpp/oop/index.md
           - 编程范式与 OOP 引入: cs/languages/cpp/oop/intro.md
           - 类：定义、成员、构造、析构: cs/languages/cpp/oop/class-1.md
+          - 类：拷贝赋值、运算符重载与引用: cs/languages/cpp/oop/class-2.md
+          - I/O Stream: cs/languages/cpp/oop/io.md
   #   - 前端三件套:
   #     - jaca script:
   #     - css:
@@ -228,12 +230,20 @@ nav:
         - Index: computing_eco/24-25class/ec/index.md
         - 博弈论基础回顾: computing_eco/24-25class/ec/game_review.md
         - 零和博弈与 Min-Max 定理: computing_eco/24-25class/ec/minmax.md
+        - 贝叶斯劝说: computing_eco/24-25class/ec/bayesian.md
+        - 社会选择理论基础: computing_eco/24-25class/ec/social_choice.md
       - 拍卖理论:
         - Index: computing_eco/24-25class/auction/index.md
+        - 私有价值拍卖，收入等价原理: computing_eco/24-25class/auction/basic.md
+        - 拍卖中的机制设计: computing_eco/24-25class/auction/mechanism.md
+        - 关联价值拍卖，收入排序原理: computing_eco/24-25class/auction/ranking.md
       - 均衡的计算: 
         - Index: computing_eco/24-25class/equilibrium/index.md
       - 算法博弈论:
         - Index: computing_eco/24-25class/game/index.md
+        - Truthful Fair Division: computing_eco/24-25class/game/fair_division.md
+        - Aggregation of Antagonistic Contingent Preferences: computing_eco/24-25class/game/aggregation.md
+        - 不含钱机制设计: computing_eco/24-25class/game/no_money_mechanism.md
   - Misc:
     - Index: misc/index.md
     - Summaries:
