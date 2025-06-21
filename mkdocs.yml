@@ -135,6 +135,9 @@ nav:
           - 类：定义、成员、构造、析构: cs/languages/cpp/oop/class-1.md
           - 类：拷贝赋值、运算符重载与引用: cs/languages/cpp/oop/class-2.md
           - I/O Stream: cs/languages/cpp/oop/io.md
+          - 模版: cs/languages/cpp/oop/template.md
+          - 异常处理: cs/languages/cpp/oop/exception.md
+          - 智能指针: cs/languages/cpp/oop/smart_pointer.md
   #   - 前端三件套:
   #     - jaca script:
   #     - css:
