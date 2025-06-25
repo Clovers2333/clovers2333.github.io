@@ -14,4 +14,4 @@
 - [x] [I/O Stream](io.md)
 - [x] [模版](template.md)
 - [x] [异常处理](exception.md)
-- [x] [智能指针](smart_pointer.md)
+- [x] [指针相关](pointer.md)

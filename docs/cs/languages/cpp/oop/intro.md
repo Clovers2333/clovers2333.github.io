@@ -169,6 +169,27 @@ public:
 
 在 Shape 中，虽然 `do_draw()` 是一个函数，但是在代码运行的时候，会更具调用它对象的实际类型来决定到底调用 `Circle::do_draw()` 还是 `Rectangle::do_draw()` 。这种机制就是 OOP 中的 **多态 (polymorphism)**。
 
+同时，我们还可以选择是 public 继承还是 private 继承:
+
+```cpp
+class Base {
+public:
+    int publicMember;
+protected:
+    int protectedMember;
+};
+
+// 类A私有继承Base
+class A : private Base {  
+    // 在A内部：Base的public/protected成员均变为private
+};
+
+// 类B公有继承Base（完全合法，不受A的影响）
+class B : public Base {  
+    // 在B内部：Base的public仍为public，protected仍为protected
+};
+```
+
 ```cpp
 #include <iostream>
 using namespace std;
@@ -255,3 +276,80 @@ Circle::render()
 ```
 
 **多态实现的原理：如果我们有一个子类的指针，并执行它的成员函数，它会从指针先找到类，再找到虚函数表（共享的），再找到函数的地址，然后执行函数。**
+
+!!! Note
+    当通过 基类指针/引用 调用虚函数时，C++ 会按照 从最派生类向基类 的顺序查找函数实现，具体步骤如下：
+
+    1. 从对象的实际类型开始：
+        根据指针/引用指向的 实际对象类型（动态类型），查找该类的重写实现。
+
+    2. 沿继承链向上查找：
+        如果当前类未重写该虚函数，则查找其直接基类。
+
+    3. 重复此过程，直到找到第一个重写的实现或到达最初的基类。
+
+    4. 最终调用：
+        执行找到的第一个重写版本。若所有派生类均未重写，则调用基类的原始实现。
+
+```cpp
+#include<iostream>
+using namespace std;
+class Base{
+protected:
+    int x;
+public:
+    Base(int b=0): x(b) { }
+    virtual void display() const {cout << x << endl;}
+};
+class Derived: public Base{
+    int y;
+public:
+    Derived(int d=0): y(d) { }
+    void display() {cout << x << "," << y << endl;}
+};
+int main()
+{
+  Base b(1);
+  Derived d(2);
+  Base *p = &d;
+  b.display();
+  d.display();
+  p->display();
+  return 0;
+}
+/*
+1
+0,2
+0
+*/
+```
+
+```cpp
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Pet {
+public:
+    virtual string speak() const { return "pet!"; }
+};
+class Dog : public Pet {
+public:
+    string speak() const { return "dog!"; }
+};
+int main() {
+    Dog ralph;
+    Pet* p1 = &ralph;
+    Pet& p2 = ralph;
+    Pet p3;
+    cout << p1->speak() <<endl;
+    cout << p2.speak() << endl;
+    cout << p3.speak() << endl;
+    return 0;
+}
+/*
+dog!
+dog!
+pet!
+*/
+```

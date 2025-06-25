@@ -137,7 +137,7 @@ nav:
           - I/O Stream: cs/languages/cpp/oop/io.md
           - 模版: cs/languages/cpp/oop/template.md
           - 异常处理: cs/languages/cpp/oop/exception.md
-          - 智能指针: cs/languages/cpp/oop/smart_pointer.md
+          - 指针相关: cs/languages/cpp/oop/pointer.md
   #   - 前端三件套:
   #     - jaca script:
   #     - css:

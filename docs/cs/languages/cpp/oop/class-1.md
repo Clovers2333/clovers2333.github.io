@@ -220,6 +220,23 @@ C++ 规定，在构造函数的函数体执行之前，所有参数要么按照 
 
 ![](./assets/class-1-1.png)
 
+!!! 一个例子
+
+    ```cpp
+    class point {
+    public:
+        int x;
+        int y;
+        point(int a, int b) { x = a; y = b; }  // 用户自定义构造函数
+        // 编译器不会自动生成默认构造函数！
+    };
+
+    int main(){
+        point a; // 编译错误，因为编译器不会自动生成默认构造函数！
+        return 0;
+    }
+    ```
+
 ### 动态分配内存
 
 构造函数存在的意义是给类中的每个对象提供一定的"保证"，而 C++ 通过确保每个对象都执行过构造函数来提供这一保证。在 C 语言中，我们通过 `malloc` 来新定义一个指针指向的类：`Container *p = (Container *)malloc(sizeof(Container));`。那么如果我们在 C++ 中这么写，会发生什么呢？
