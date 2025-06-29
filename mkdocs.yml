@@ -41,8 +41,8 @@ theme:
         icon: material/toggle-switch-off
         name: Switch to system preference
   font: # 字体，大概率不需要换
-    text: Roboto
-    code: Roboto Mono
+    text: LXGW WenKai Screen GB Screen
+    code: JetBrains Mono
 
 markdown_extensions:
     - toc:

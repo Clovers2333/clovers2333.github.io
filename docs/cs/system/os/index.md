@@ -8,7 +8,9 @@
 - [ ] [OS Structure](Structure.md)
 - [x] [Process](Process.md)
 - [x] [Scheduling](Scheduling.md)
-- [ ] [Thread](Thread.md)
+- [x] [Thread](Thread.md)
 - [x] [Synchronization](Synchronization.md)
-- [ ] [Deadlock](Deadlock.md)
+- [x] [Deadlock](Deadlock.md)
 - [ ] [Main Memory](MainMemory.md)
+
+> 咕咕咕了，没好好更新 os 笔记确实不应该

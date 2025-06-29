@@ -2,17 +2,17 @@
 
 Hi！欢迎来到我的博客！我会在这里不定期更新我的学习笔记 / 记录一些有趣的东西！
 
+我认为笔记的意义在于记录有用但不熟练的内容，接下来更新的重点主要是：
+
+- Workload 较大的课程的一个知识点索引
+- 主线工作上所需要的一些知识积累
+
+当然也会更新一些生活总结以及一些有趣的主题 / 工作。
+
 ## 最近在做什么？
 
-- [ ] [24-25 计算经济学讨论班](computing_eco/24-25class/index.md)
-- [ ] [CS229 笔记](cs/ai/cs229/index.md)
-- [ ] [《100 天 C++ 从精通到入门》](cs/languages/cpp/index.md)
-  - [ ] [OOP 笔记](cs/languages/cpp/oop/index.md)
-  - [ ] [CS106L](cs/languages/cpp/cs106L/note.md)
-- [ ] [编译原理笔记](cs/compiler/index.md)
-- [ ] [操作系统笔记](cs/system/os/index.md)
-
-## 最近更新！
-
-- [24-25秋冬学期总结](misc/summary/24-25_first_summary.md)
-
+- [ ] [The Design of Approximation Algorithms](math/Appr/index.md)
+- [ ] 数据要素市场大作业——信息定价中的机制设计
+- [ ] 24-25 春夏学期计算经济学讨论班简要总结
+- [ ] Beyond Bayesian Bandit reading group
+- [ ] 24-25 春夏学期总结

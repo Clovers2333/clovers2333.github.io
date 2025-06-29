@@ -6,8 +6,5 @@
 
 - [x] [计算理论基础](tcs.md)
 - [x] [词法分析](lexical.md)
-- [ ] [语法分析](parse.md)
-- [ ] [语义分析](semantic.md)
-- [ ] [运行时环境](environment.md)
-- [ ] [中间代码生成](intermediate.md)
-- [ ] [目标代码生成](object.md)
+
+> 剩下的咕咕咕了awa
