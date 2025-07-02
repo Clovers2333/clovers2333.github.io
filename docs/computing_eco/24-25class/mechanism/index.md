@@ -1,4 +1,4 @@
-# 算法博弈论
+# 机制设计
 
 ## Table of Contents
 

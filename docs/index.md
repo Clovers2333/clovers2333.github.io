@@ -12,7 +12,7 @@ Hi！欢迎来到我的博客！我会在这里不定期更新我的学习笔记
 ## 最近在做什么？
 
 - [ ] [The Design of Approximation Algorithms](math/Appr/index.md)
-- [ ] 数据要素市场大作业——信息定价中的机制设计
+- [ ] [数据要素市场大作业——信息定价中的机制设计](computing_eco/articles/Information_Pricing_Mechanism/index.md)
 - [ ] 24-25 春夏学期计算经济学讨论班简要总结
 - [ ] Beyond Bayesian Bandit reading group
-- [ ] 24-25 春夏学期总结
+- [ ] [24-25 春夏学期总结](misc/summary/24-25_second_summary.md)
