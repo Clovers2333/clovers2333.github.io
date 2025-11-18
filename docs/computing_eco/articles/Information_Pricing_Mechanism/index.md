@@ -83,7 +83,7 @@ $$\xi(\theta) = V_1(\theta) - V_0(\theta)$$
 
 - **效用计算**: 买方通过贝叶斯更新后验信念，最大化 $U(\theta, \phi) = \mathbb{E}[u(\theta, \omega, a)|Z] - \tau(Z)$，其中 $Z$ 为协议终止节点，$\tau(Z)$ 为累计支付。 
 
-## Table of Contents
+## Articles
 
 接下来将详细介绍两篇论文：
 
@@ -94,3 +94,53 @@ $$\xi(\theta) = V_1(\theta) - V_0(\theta)$$
 --- | --- | --- | ---
 Moshe, Bobby-Optimal Mechanisms for Selling Information(2012) | [笔记](Moshe,Bobby.md) | [原论文](Moshe,Bobby.pdf) | [讲义](slides.pdf)
 Yiling, Haifeng, Shuran-Selling Information Through Consulting(2020) | [笔记](Yiling,Haifeng,Shuran.md) | [原论文](Yiling,Haifeng,Shuran.pdf) | ---
+
+## Table of Contents
+
+### 1. Introduction
+
+#### 1.1 问题背景
+
+#### 1.2 Main Results
+
+### 2. Preliminaries
+
+#### 2.1 个人理性、激励相容、显示原理
+
+#### 2.2 Basic Setup
+
+#### 2.3 The Design Space
+
+#### 2.4 Information Revelation via Signaling Schemes
+
+#### 2.5 Player Utilities and the Revenue Maximization Problem
+
+#### 2.6 Envelope
+
+### 3. Independent Signals
+
+#### 3.1 Public Budget
+
+##### 3.1.1 Pricing Mappings
+
+##### 3.1.2 CM-dirP
+
+#### 3.2 Private Budget - CM-depR
+
+#### 3.3 Computing Optimal Consulting Mechanisms
+
+### 4. Correlated Signals
+
+#### 4.1 Pricing Outcomes
+
+Commited?
+
+Not Commited?
+
+#### 4.2 CM-ProbR
+
+#### 4.3 Computing the Optimal CM-probR
+
+#### 4.4 Other Properties
+
+### 5. Open Problems

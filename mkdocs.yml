@@ -183,6 +183,15 @@ nav:
         - Generative Learning Algorithms: cs/ai/cs229/chapter4.md
         - Kernel Methods: cs/ai/cs229/chapter5.md
         - Support Vector Machines: cs/ai/cs229/chapter6.md
+      - Foundation of ML:
+        - Index: cs/ai/Foundation of ML/index.md
+        - Introduction: cs/ai/Foundation of ML/introduction.md
+        - The PAC Learning Framework: cs/ai/Foundation of ML/pac.md
+        - Rademacher Complexity: cs/ai/Foundation of ML/rademacher.md
+        - Support Vector Machines: cs/ai/Foundation of ML/svm.md
+        - Kernel Methods: cs/ai/Foundation of ML/kernel.md
+        - Boosting: cs/ai/Foundation of ML/boosting.md
+        - Online Learning: cs/ai/Foundation of ML/online.md
     - System:
       - Languages:
         - CS61C: cs/system/languages/cs61c.md
@@ -228,6 +237,11 @@ nav:
       - Randomized rounding of semidefinite programs: math/Appr/ch6.md
       - The primal-dual method: math/Appr/ch7.md
       - Cuts and metrics: math/Appr/ch8.md
+    - Statistics:
+      - Index: math/statistics/index.md
+      - Introduction: math/statistics/intro.md
+      - Laws of Large Numbers and Central Limit Theorem: math/statistics/large_numbers.md
+      - Estimation: math/statistics/estimation.md
   - Economy & Finance:
     - 微观经济学: finance/micro.md
     - 公司金融:

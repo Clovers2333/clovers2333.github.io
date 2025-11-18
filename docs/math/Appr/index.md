@@ -17,5 +17,27 @@
 - [ ] [7. The primal-dual method](ch7.md)
 - [ ] [8. Cuts and metrics](ch8.md)
 
-### Section 2
+## 25-26 秋冬学期组合优化讨论班安排
 
+### Part 1: 线性规划基础
+
+单纯形算法
+对偶基础回顾、对偶单纯形法
+原始-对偶方法及其应用(PAPADIMITRIOU Chapter 5-7)
+最大流算法(PAPADIMITRIOU Chapter 9)
+贪心算法、拟阵(PAPADIMITRIOU Chapter 12)
+
+### Part 2：线性整数规划
+
+Models：Packing, Covering, Partitioning(Integer Programming Chapter 2.4)
+(简单介绍上述三种模型)
+割平面法(PAPADIMITRIOU Chapter 14)
+分枝定界法(PAPADIMITRIOU Chapter 18)
+整数规划基于LP松弛的近似和原始对偶近似
+
+### Part 3 经典问题讲解
+
+Algorithms for matching and weighted matching
+Approximation algorithms for packing, covering and partitioning problems(PAPADIMITRIOU Chapter 17)
+斯坦纳树、旅行商问题
+Local Search(PAPADIMITRIOU Chapter 19)

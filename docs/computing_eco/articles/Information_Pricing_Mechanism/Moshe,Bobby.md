@@ -50,6 +50,8 @@
 
     **(2) 构造简化协议**
 
+    我们要把任意的一个协议树，转化为一个简化协议树。
+
     **1. 第一层（根节点）**：
 
     - 买方节点：买方报告类型 $\hat{\theta} \in \Theta$（可能谎报）。
@@ -74,31 +76,19 @@
 
     - **激励相容**：买方诚实报告 $\theta$ 是最优策略。
 
-    **a. 收益不变**：
-
-    - 简化协议中，类型 $\theta$ 的买方支付 $t_\theta = \mathbb{E}_\omega[\tau(Z(\omega, \theta))]$，与原始协议一致。
-
-    - 由于独立性，$\omega$ 的分布与 $\theta$ 无关，期望收益保持不变。
+    **a. 收益不变**：基于定义，需要支付的价格就是买方类型为 $\theta$ 时引导的整个协议树的期望收益。
 
     **b. 激励相容 (IC)**：
 
-    - **诚实报告的效用**：买方报告真实类型 $\theta$，支付 $t_\theta$，获得原始协议的信息和行动效用。
+    主要是从买方的角度，说明他为什么不会偏移当前的决策，买方在考虑偏移的时候主要关心的是他的支付以及他可以获得的信息分布。
 
-    - **谎报的效用**：若买方谎报为 $\theta'$，其支付为 $t_{\theta'}$，但信息结构 $Z(\omega, \theta')$ 是为类型 $\theta'$ 设计的，对类型 $\theta$ 可能次优。
+    考虑买方如果在新的协议中选择谎报 $\theta'$，我们希望能够把他规约到在原协议中，买方持有 $\theta$，但是选择执行 $\phi^{\theta'}$ 的策略，因为在原策略中 $\phi^{\theta}$ 才是最优反应，所以买方不会偏移。
 
-    - **关键点**：由于 $\omega \perp \theta$，类型 $\theta$ 买方谎报时，$\omega$ 的分布仍为 $p(\omega)$（与真实类型无关），因此其效用与原始协议中模仿类型 $\theta'$ 策略 $\phi^{\theta'}$ 相同（其实 $t_{\theta'}$ 就是按照 $\phi^{\theta'}$ 来计算的）。但原始协议中 $\phi^\theta$ 已是最优策略，故谎报无利可图。
 
-    **c. 非承诺买方的自愿性**：
 
-    - 简化协议中，买方在支付 $t_\theta$ 后立即获得信号，无法中途退出（因协议结束），故非承诺性不影响参与。
+    **(4) 与相关信号的对比**
 
-    **(4) 独立性的关键作用**
-
-    - **支付计算**：期望支付 $t_\theta = \mathbb{E}_\omega[\tau(Z(\omega, \theta))]$ 仅依赖 $\theta$，因 $\omega$ 的分布与 $\theta$ 无关。
-
-    - **信号生成**：卖方节点按 $Z(\omega, \theta)$ 生成信号，但独立性保证不同 $\theta$ 的信号价值可分离。
-
-这意味着在独立信号下，买方承诺与否不影响卖方的最优收益。
+    若 $\omega$ 与 $\theta$ 相关，证明失效的原因：卖方可以利用买方报告的类型，实现价格歧视。
 
 同时，它也意味着所有的最优机制都可以映射到定价映射机制，我们只需要在这个结构上加上个人理性和激励相容条件就可以具体化地求解。
 
@@ -205,10 +195,8 @@ q = \mathbb{P}[\omega|Y_\theta=s] = \frac{\psi_\theta^\omega(Y_\theta=s) \cdot \
 
 
 ??? "对偶目标函数与约束的推导详解"
-
     
-
-    ### 1. 拉格朗日对偶问题的基本框架
+    #### 1. 拉格朗日对偶问题的基本框架
 
     对于原始线性规划 $LP_1$：
 
@@ -222,7 +210,7 @@ q = \mathbb{P}[\omega|Y_\theta=s] = \frac{\psi_\theta^\omega(Y_\theta=s) \cdot \
     \mathcal{L}(x, t; g, h, y) = \text{原始目标} + \text{乘子} \times \text{约束}
     \end{align*}
 
-    ### 2. 拉格朗日目标函数的构造
+    #### 2. 拉格朗日目标函数的构造
 
     具体展开如下：
 
@@ -233,7 +221,7 @@ q = \mathbb{P}[\omega|Y_\theta=s] = \frac{\psi_\theta^\omega(Y_\theta=s) \cdot \
     &+ \sum_{\theta, \omega} y_\theta(\omega) \left( p(\omega) - \sum_q x_\theta(q) q(\omega) \right) \quad (\text{贝叶斯可行性})
     \end{align*}
 
-    ### 3. 对偶问题的目标函数
+    #### 3. 对偶问题的目标函数
 
     拉格朗日对偶问题的目标是：
 
@@ -292,7 +280,7 @@ q = \mathbb{P}[\omega|Y_\theta=s] = \frac{\psi_\theta^\omega(Y_\theta=s) \cdot \
     \min \sum_\theta p^T y_\theta
     \end{align*}
 
-    ### 4. 对偶约束的最终形式
+    #### 4. 对偶约束的最终形式
 
     将约束整理为标准形式：
 
@@ -308,7 +296,7 @@ q = \mathbb{P}[\omega|Y_\theta=s] = \frac{\psi_\theta^\omega(Y_\theta=s) \cdot \
     g_\theta + \sum_{\theta' \neq \theta} (h_{\theta, \theta'} - h_{\theta', \theta}) \geq \mu(\theta)
     \end{align*}
 
-### 分离Oracle
+#### 分离Oracle
 
 **Separation oracle**：第二族约束的大小是 $|\Theta|$，所以分离是trivial的。为了分离第一族约束，我们以不同的方式重写约束。注意 $v_\theta(\cdot)$ 是 $|A|$ 个线性函数的最大值。因此，我们可以将第一族的每个约束替换为以下 $|A|$ 个约束：
 
